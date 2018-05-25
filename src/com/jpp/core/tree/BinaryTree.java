@@ -32,8 +32,32 @@ public class BinaryTree {
     private Integer  data;
     private BinaryTree left;//左节点
     private BinaryTree right;//有节点
+    
+    public Integer getData() {
+		return data;
+	}
 
-    public BinaryTree(Integer  data, BinaryTree left, BinaryTree right) {
+	public void setData(Integer data) {
+		this.data = data;
+	}
+
+	public BinaryTree getLeft() {
+		return left;
+	}
+
+	public void setLeft(BinaryTree left) {
+		this.left = left;
+	}
+
+	public BinaryTree getRight() {
+		return right;
+	}
+
+	public void setRight(BinaryTree right) {
+		this.right = right;
+	}
+
+	public BinaryTree(Integer  data, BinaryTree left, BinaryTree right) {
         this.data = data;
         this.left = left;
         this.right = right;
@@ -178,6 +202,27 @@ public class BinaryTree {
                 }
             }
         }
+    }
+    
+    /**
+     * 搜索节点
+     * @param node
+     * @param value
+     * @return
+     */
+    public boolean findNode(BinaryTree node,Integer value){
+    	if(null!=node){
+    		//小于则左子树继续比较
+    		if(value<node.data&&null!=node.left){
+    				return findNode(node.left,value);
+    		}
+    		//大于则右子树继续比较
+    		if(value>node.data&&null!=node.right){
+    				return findNode(node.right,value);
+    		}
+    		return value.intValue()==node.data.intValue();
+    	}
+    	return false;
     }
 
 
